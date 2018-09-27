@@ -3,8 +3,10 @@
 
 ### 内容说明
 * 本示例大量借鉴原著，请参考：
-1. http://www.cnblogs.com/smartbetter/p/7723773.html
-2. http://www.jcodecraeer.com/a/chengxusheji/java/2017/0731/8315.html
+1. https://www.jianshu.com/p/cd984dd5aae8
+2. http://www.cnblogs.com/smartbetter/p/7723773.html
+3. http://www.jcodecraeer.com/a/chengxusheji/java/2017/0731/8315.html
+
 
 ### -----------------------------常用操作符-----------------------------
 |操作符类型       |API描述                                                         |API备注
