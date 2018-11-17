@@ -38,6 +38,14 @@ public abstract class BaseRunClass {
         }
     }
 
+    public static void sleepMillSeconds(int mill) {
+        try {
+            TimeUnit.MILLISECONDS.sleep(mill);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void await(CountDownLatch countDownLatch) {
         try {
             countDownLatch.await();
