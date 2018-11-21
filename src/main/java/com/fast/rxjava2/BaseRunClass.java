@@ -32,6 +32,7 @@ public abstract class BaseRunClass {
 
     public static void sleep(int seconds) {
         try {
+            System.out.printf("sleep %s seconds\n", seconds);
             TimeUnit.SECONDS.sleep(seconds);
         } catch (InterruptedException e) {
             e.printStackTrace();

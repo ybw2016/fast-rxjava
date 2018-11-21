@@ -16,7 +16,7 @@ public class FromArray extends BaseRunClass {
          * 数组遍历
          **/
         // 1. 设置需要传入的数组
-        Integer[] items = {0, 1, 2, 3, 4};
+        Integer[] items = getNumbers();
 
         // 2. 创建被观察者对象（Observable）时传入数组
         // 在创建后就会将该数组转换成Observable & 发送该对象中的所有数据
@@ -42,5 +42,15 @@ public class FromArray extends BaseRunClass {
                         logger.info("遍历结束");
                     }
                 });
+    }
+
+    public static Integer[] getNumbers() {
+        return new Integer[]{getData(0), getData(1), getData(2),
+                getData(3), getData(4), getData(5)};
+    }
+
+    static Integer getData(Integer number) {
+        sleep(number % 2);
+        return number;
     }
 }

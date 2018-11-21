@@ -5,8 +5,6 @@ import com.fast.rxjava2.BaseRunClass;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.schedulers.Schedulers;
 
@@ -78,27 +76,28 @@ public class Zip extends BaseRunClass {
             public String apply(Integer integer, String string) throws Exception {
                 return integer + "|" + string + "#";
             }
-        }).subscribe(new Observer<String>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-                logger.info("onSubscribe");
-            }
-
-            @Override
-            public void onNext(String value) {
-                logger.info("最终接收到的事件 =  " + value);
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                logger.info("onError");
-            }
-
-            @Override
-            public void onComplete() {
-                logger.info("onComplete");
-            }
-        });
+        }).blockingSubscribe(System.out::println);
+//        }).subscribe(new Observer<String>() {
+//            @Override
+//            public void onSubscribe(Disposable d) {
+//                logger.info("onSubscribe");
+//            }
+//
+//            @Override
+//            public void onNext(String value) {
+//                logger.info("最终接收到的事件 =  " + value);
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//                logger.info("onError");
+//            }
+//
+//            @Override
+//            public void onComplete() {
+//                logger.info("onComplete");
+//            }
+//        });
 
         sleep(6);
 
