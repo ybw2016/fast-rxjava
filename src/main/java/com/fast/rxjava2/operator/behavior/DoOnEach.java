@@ -2,18 +2,11 @@ package com.fast.rxjava2.operator.behavior;
 
 import com.fast.rxjava2.BaseRunClass;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import io.reactivex.Notification;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
 
 /**
  * doOnEach() 相当于java8 stream中的peek()方法
@@ -29,29 +22,11 @@ public class DoOnEach extends BaseRunClass {
                 e.onNext(1);
                 e.onNext(2);
                 e.onNext(3);
-                e.onError(new RuntimeException());
+
+                e.onComplete();
                 //e.onError(new Throwable("发生错误了"));
             }
         })
-                .flatMap(new Function<Integer, ObservableSource<Integer>>() {
-                    @Override
-                    public ObservableSource<Integer> apply(Integer integer) throws Exception {
-                        final List<Integer> list = new ArrayList<>();
-                        for (int i = 0; i < 3; i++) {
-                            list.add(i * 2);
-                            // 通过flatMap中将被观察者生产的事件序列先进行拆分，再将每个事件转换为一个新的发送三个String事件
-                            // 最终合并，再发送给被观察者
-                        }
-                        return Observable.fromIterable(list);
-                    }
-                })
-                // 1. 当Observable每发送1次数据事件就会调用1次
-                .doOnEach(new Consumer<Notification<Integer>>() {
-                    @Override
-                    public void accept(Notification<Integer> integerNotification) throws Exception {
-                        logger.info("doOnEach_accept: " + integerNotification.getValue());
-                    }
-                })
 //                // 2. 执行Next事件前调用
 //                .doOnNext(new Consumer<Integer>() {
 //                    @Override
