@@ -25,8 +25,8 @@ public class ConcatMap extends BaseRunClass {
             @Override
             public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
                 emitter.onNext(1);
-                emitter.onNext(2);
-                emitter.onNext(3);
+//                emitter.onNext(2);
+//                emitter.onNext(3);
             }
             // 采用flatMap（）变换操作符
         }).concatMap(new Function<Integer, ObservableSource<String>>() {
